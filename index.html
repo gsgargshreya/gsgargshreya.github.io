@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shreya Garg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+  	object { 
+  		
+  	}
+  	.company_name{
+	  	text-decoration: underline;
+  	}
+  	
+  </style>    	
+  
+  <script type="text/javascript">
+	var app = angular.module('app',['ngRoute']);
+
+	app.config(function($routeProvider){
+	$routeProvider.when("/about",{templateUrl:'about.html'})
+	.when("/experience",{templateUrl:'experience.html'})
+	.when("/skills",{templateUrl:'skills.html'})
+	.when("/projects",{templateUrl:'projects.html'})
+	.when("/resume",{templateUrl:'resume.html'})
+	.when("/contact",{templateUrl:'contact.html'});
+		});
+
+	app.controller('mainController', function($scope,$http){
+		$scope.initial = function(){
+			$scope.aboutmeCheck = true;
+			$http.get('project.json').success(function(data){
+				$scope.data = data;
+			});
+			$(function(){
+			      $("#footer").load("footer.html"); 
+			});
+		}
+		$scope.aboutme = function(){
+			$scope.aboutmeCheck = true;
+			$(function(){
+			      $("#footer").load("footer.html"); 
+			});
+		}
+		
+		
+		$scope.skills = function(){
+			$scope.aboutmeCheck = false;
+			
+		}
+		$scope.resume = function(){
+			$scope.aboutmeCheck = false;
+			$(function(){
+			      $("#footer").load("footer.html"); 
+			});
+		}
+		$scope.projects = function(){
+			$("p").hide();
+			//$("p").slideToggle("slow");
+			$scope.aboutmeCheck = false;
+			$(function(){
+			      $("#footer").load("footer.html"); 
+			});
+		}
+		
+		$scope.experience = function(){
+			$("p").hide();
+			$scope.aboutmeCheck = false;
+			$(function(){
+			      $("#footer").load("footer.html"); 
+			});
+		}
+		$scope.showProject = function(id){
+			$("p").slideUp();
+			$("#"+id).slideToggle("slow");
+		}
+	});	
+	
+	
+		
+	
+	
+  </script>
+
+</head>
+
+<style type="text/css">
+	.navbar-brand{
+		font-size : xx-large;
+		font-family:verdana;
+		color : #182153;
+	}
+
+	.jumbotron{
+		-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+	}
+/* 	.left-half{
+		float: left;
+		width: 50%;
+		height: 80%;
+	}	
+
+	.right-half{
+		width:50%;
+		height:80%;
+		float: right;
+		color:#182153;
+	} */
+
+	.sub-heading{
+		font-weight: bold;
+		font-family: verdana;
+		color : #182153;
+	}
+	.content{
+		color : #182153;
+	}
+		
+	.nav.navbar-nav.navbar-right li a {
+		/* color: #182153; */
+	}
+	
+	.navbar-default .navbar-brand {
+    	color: #182153;
+	}
+	
+	.table {
+	    border-radius: 5px;
+	    width: 50%;
+	    margin: 0px auto;
+	    float: none;
+	}
+</style>
+
+<body ng-app="app" ng-controller="mainController" ng-init="initial()">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">&nbsp;&nbsp;Shreya Garg</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="#" ng-click = "aboutme()">ABOUT</a></li>
+      <li><a href="#experience" ng-click="experience()">EXPERIENCE</a></li>
+      <li><a href="#skills" ng-click="skills()">SKILLS</a></li>
+      <li><a href="#projects" ng-click="projects()">PROJECTS</a></li>
+      <li><a href="#resume" ng-click="resume()">RESUME</a></li>
+      <li><a href="#">CONTACT</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron" ng-if="aboutmeCheck">
+<div class="container">
+<div class="row">
+	<div class="col-lg-4 col-ld-offset-2 col-md-4 col-md-offset-2" >
+		<img src="my_pic.jpg" style="width: 100%;height: 400px;" />
+	</div>
+	<div class="col-lg-4 col-md-4 well well-sm">
+		<h2>Shreya Garg</h2>
+		<h3>Assistant System Engineer at TCS</h3>
+		<div class="sub-heading">Phone:</div>
+		<div class="content">+91-9528****6</div><br>
+		<div class="sub-heading">Email:</div>
+		<div class="content">shreyagarg898@gmail.com</div><br>
+		<div class="sub-heading">Address:</div>
+		<div class="content">C-304, XYZ Apartments,<br>
+		Sec-62,<br>
+		Noida-301507
+		</div><br>
+		<div class="sub-heading">Date of Birth:</div>
+		<div class="content">October 10th, 1994</div><br>
+	<!--  	</div>-->
+	</div>
+	<div class="col-lg-2 col-md-2"></div>
+</div>
+<div id="footer"></div> 
+
+</div>
+</div>
+<div ng-view></div>
+
+</body>
+</html>

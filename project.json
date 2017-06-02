@@ -1,0 +1,27 @@
+{"left":[{
+			"id":1,
+			"name" :"Online Lab Service Management-JAVA",
+			"descr" :"A web application developed using JSP and servlet used to manage labs,schedule appointments and other various role dependent operations.",
+			"stack" :"Java, JSP, MySQL" 
+
+		},
+		{
+			"id":2,
+			"name" :"MedHelp",
+			"descr" :"An application to search an appropriate medicine. Used GWT, JAVA and NoSQL to develop it. Elastic Search is implemented to give the most appropriate and frequently used medicines.",
+			"stack" :"GWT, Java, NoSQL,Elastic Search, Bootstrap" 
+		}
+
+	],
+	"right":[
+		{
+			"id":3,
+			"name" :"Bank Registration System",
+			"descr" :"A database management system made using JDBC and SQL.",
+			"stack" :"Java, JDBC, SQL" 
+		}
+		
+	]
+}
+
+
